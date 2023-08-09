@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="667.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotroller.DashboardController">
+   <children>
+      <AnchorPane prefHeight="675.0" prefWidth="834.0" style="-fx-background-color: #99FFFF; -fx-background-radius: 9px; -fx-border-color: #006666; -fx-border-width: 5px; -fx-border-radius: 7px;">
+         <children>
+            <AnchorPane layoutX="25.0" layoutY="20.0" prefHeight="221.0" prefWidth="210.0" style="-fx-background-color: #3796a7; -fx-background-radius: 15px; -fx-border-radius: 10px;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="136.0" prefHeight="28.0" prefWidth="87.0" text="ST/\">
+                     <font>
+                        <Font name="Gabriola" size="34.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.6940062850807744" endY="0.5520504626565927" startX="0.6971609314157383" startY="0.0757097791798107">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.5600000023841858" green="0.02800000086426735" blue="0.07574518769979477" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.8100000023841858" green="0.6755021810531616" blue="0.2754000127315521" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label layoutX="34.0" layoutY="178.0" prefHeight="28.0" prefWidth="161.0" text="SHOPING CENTER">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.6940062850807744" endY="1.0" startX="0.7003154574132492" startY="0.26813882532932026">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8100000023841858" green="0.43815338611602783" blue="0.2754000127315521" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Circle layoutX="105.0" layoutY="74.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 1px;">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.13880130996463427">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.14267922937870026" green="0.1460084170103073" blue="0.14912280440330505" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="120.0" fitWidth="113.0" layoutX="49.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/worky-happy-woman-going-shopping.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="30.0" layoutY="262.0" prefHeight="381.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 14px; -fx-border-color: #006666; -fx-border-width: 8px; -fx-border-radius: 10px;">
+               <children>
+                  <Button layoutX="41.0" layoutY="93.0" mnemonicParsing="false" onAction="#btnCustomerAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Customer" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnItemAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Item" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="43.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnHomeOnAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="26.0" layoutY="340.0" prefHeight="17.0" prefWidth="147.0" style="-fx-background-color: #CCFFFF;" text="\@ST/\SHOPING SENTER" />
+                  <Button layoutX="41.0" layoutY="231.0" mnemonicParsing="false" onAction="#btnOrderAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Order" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnLogOut" layoutX="38.0" layoutY="276.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="55.0" prefWidth="120.0" style="-fx-background-color: #FFFFFF;">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-logout-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <BorderPane fx:id="root" layoutX="284.0" layoutY="27.0" prefHeight="605.0" prefWidth="483.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-radius: 6px; -fx-border-color: #0DFFA7; -fx-border-width: 3px;">
+               <top>
+                  <AnchorPane prefHeight="105.0" prefWidth="478.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="13.0" layoutY="25.0" prefHeight="87.0" prefWidth="451.0" style="-fx-background-color: #009999; -fx-background-radius: 10px; -fx-border-color: #00CCCC; -fx-border-radius: 10px;" text="  ~~___D/\SHBoard___~~">
+                           <font>
+                              <Font name="Gabriola" size="44.0" />
+                           </font>
+                           <textFill>
+                              <RadialGradient centerX="0.5073800878771116" centerY="0.5504731740861285" radius="0.5">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.5867798328399658" green="0.14506173133850098" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </RadialGradient>
+                           </textFill>
+                        </Label>
+                        <Circle layoutX="61.0" layoutY="69.0" radius="35.0" stroke="BLACK" strokeType="INSIDE">
+                           <fill>
+                              <RadialGradient centerX="0.5" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.5867798328399658" green="0.14506173133850098" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </RadialGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="37.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-windshield-defroster-and-foot-outlet-50.png" />
+                           </image>
+                        </ImageView>
+                        <Circle layoutX="421.0" layoutY="69.0" radius="35.0" stroke="BLACK" strokeType="INSIDE">
+                           <fill>
+                              <RadialGradient centerX="0.5" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.5867798328399658" green="0.14506173133850098" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </RadialGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="397.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-windshield-defroster-and-foot-outlet-50.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <bottom>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="-255.0" prefHeight="405.0" prefWidth="469.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="27.0" prefHeight="120.0" prefWidth="127.0" style="-fx-background-color: #E0FFFF; -fx-background-radius: 7px; -fx-border-radius: 5px; -fx-border-color: #4C0099; -fx-border-width: 2px;">
+                                 <textFill>
+                                    <RadialGradient centerX="0.5" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <Label layoutX="163.0" layoutY="27.0" prefHeight="120.0" prefWidth="127.0" style="-fx-background-color: #E0FFFF; -fx-background-radius: 7px; -fx-border-radius: 5px; -fx-border-color: #4C0099; -fx-border-width: 2px;">
+                                 <textFill>
+                                    <RadialGradient centerX="0.5" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <Label layoutX="321.0" layoutY="27.0" prefHeight="120.0" prefWidth="127.0" style="-fx-background-color: #E0FFFF; -fx-background-radius: 7px; -fx-border-radius: 5px; -fx-border-color: #4C0099; -fx-border-width: 2px;">
+                                 <textFill>
+                                    <RadialGradient centerX="0.5" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="117.0" prefHeight="28.0" prefWidth="69.0" text="Customers">
+                                 <font>
+                                    <Font name="Gabriola" size="21.0" />
+                                 </font>
+                                 <textFill>
+                                    <RadialGradient centerX="0.4188192022682556" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.6842105388641357" green="0.031676411628723145" blue="0.031676411628723145" opacity="0.8600000143051147" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="378.0" layoutY="117.0" prefHeight="28.0" prefWidth="69.0" text="Orders">
+                                 <font>
+                                    <Font name="Gabriola" size="21.0" />
+                                 </font>
+                                 <textFill>
+                                    <RadialGradient centerX="0.4188192022682556" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.6842105388641357" green="0.031676411628723145" blue="0.031676411628723145" opacity="0.8600000143051147" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="117.0" prefHeight="28.0" prefWidth="51.0" text="Items">
+                                 <font>
+                                    <Font name="Gabriola" size="21.0" />
+                                 </font>
+                                 <textFill>
+                                    <RadialGradient centerX="0.4188192022682556" centerY="0.49684540180001724" focusDistance="0.03053432202521167" radius="0.6832061505499687">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.6842105388641357" green="0.031676411628723145" blue="0.031676411628723145" opacity="0.8600000143051147" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="45.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-customers-50.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="210.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-box-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="362.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-delivery-box-64.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="129.0" fitWidth="101.0" layoutX="297.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/demure-man-works-on-his-laptop-while-sitting-in-a-chair.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="94.0" fitWidth="45.0" layoutX="108.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-black-girl-with-empty-shopping-cart.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="141.0" fitWidth="120.0" layoutX="187.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-team-of-employees-discussing-the-project.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="85.0" fitWidth="132.0" layoutX="12.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/lifestyle-university-building.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="78.0" fitWidth="70.0" layoutX="29.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-girl-with-shopping-bags.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="55.0" fitWidth="22.0" layoutX="85.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/casual-life-3d-girl-holding-shopping-bags.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="52.0" fitWidth="40.0" layoutX="25.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-delivery-boy-on-scooter-1.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="147.0" fitWidth="181.0" layoutX="274.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/casual-life-3d-young-man-sitting-on-sofa-with-cat-next-to-him.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView accessibleRole="DECREMENT_BUTTON" fitHeight="91.0" fitWidth="87.0" layoutX="2.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: left;">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-black-girl-with-shopping-cart.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" layoutX="57.0" layoutY="59.0" prefHeight="28.0" prefWidth="41.0" style="-fx-border-radius: 3px; -fx-border-color: #404040; -fx-background-color: #FFFFFF;" text="Num" />
+                              <Label alignment="CENTER" layoutX="206.0" layoutY="59.0" prefHeight="28.0" prefWidth="41.0" style="-fx-border-radius: 3px; -fx-border-color: #404040; -fx-background-color: #FFFFFF;" text="Num" />
+                              <Label alignment="CENTER" layoutX="364.0" layoutY="59.0" prefHeight="28.0" prefWidth="41.0" style="-fx-border-radius: 3px; -fx-border-color: #404040; -fx-background-color: #FFFFFF;" text="Num" />
+                              <ImageView fitHeight="42.0" fitWidth="50.0" layoutX="73.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/casual-life-3d-dog-walking-with-grocery-bag.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="120.0" fitWidth="137.0" layoutX="206.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/3d-casual-life-tired-female-student-sitting-with-book-on-her-face.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="55.0" fitWidth="60.0" layoutX="102.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/casual-life-3d-girl-holding-umbrella-and-looking-at-cat.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </bottom></BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
