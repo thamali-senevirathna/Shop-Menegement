@@ -1,7 +1,6 @@
-package cotroller;
+package controller;
 
 import javafx.collections.ObservableList;
-import model.Customer;
 import model.Item;
 
 public interface ItemService {

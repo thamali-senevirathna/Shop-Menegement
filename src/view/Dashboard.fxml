@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="667.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotroller.DashboardController">
+<AnchorPane prefHeight="667.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
    <children>
       <AnchorPane prefHeight="675.0" prefWidth="834.0" style="-fx-background-color: #99FFFF; -fx-background-radius: 9px; -fx-border-color: #006666; -fx-border-width: 5px; -fx-border-radius: 7px;">
          <children>
@@ -104,7 +104,7 @@
                      </font>
                   </Button>
                   <Label layoutX="26.0" layoutY="340.0" prefHeight="17.0" prefWidth="147.0" style="-fx-background-color: #CCFFFF;" text="\@ST/\SHOPING SENTER" />
-                  <Button layoutX="41.0" layoutY="231.0" mnemonicParsing="false" onAction="#btnOrderAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Order" textFill="WHITE">
+                  <Button fx:id="btnOrder" layoutX="41.0" layoutY="231.0" mnemonicParsing="false" onAction="#btnOrderAction" prefHeight="33.0" prefWidth="113.0" style="-fx-background-color: #3796a7;" text="Order" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

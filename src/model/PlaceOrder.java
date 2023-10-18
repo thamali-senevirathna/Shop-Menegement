@@ -6,15 +6,15 @@ public class PlaceOrder {
         private String orderId;
         private String date;
         private String customerId;
-        private ArrayList<OrderDetails> orderDetails;
-
-        public PlaceOrder(String orderId, String date, String customerId, ArrayList<OrderDetails> orderDetails) {
+        private int customerBuyItemQty;
+    private ArrayList<OrderDetails> orderDetails;
+        public PlaceOrder(String orderId, String date, String customerId,int customerBuyItemQty, ArrayList<OrderDetails> orderDetails) {
             this.orderId = orderId;
             this.date = date;
             this.customerId = customerId;
+            this.customerBuyItemQty = customerBuyItemQty;
             this.orderDetails = orderDetails;
         }
-
     public String getOrderId() {
         return orderId;
     }
@@ -38,6 +38,13 @@ public class PlaceOrder {
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
+    public int getCustomerBuyItemQty() {
+        return customerBuyItemQty;
+    }
+
+    public void setCustomerBuyItemQty(int customerBuyItemQty) {
+        this.customerBuyItemQty = customerBuyItemQty;
+    }
 
     public ArrayList<OrderDetails> getOrderDetails() {
         return orderDetails;
@@ -48,9 +55,15 @@ public class PlaceOrder {
     }
 
     @Override
-        public String toString() {
-            return "Item{" + "id=" + orderId + ", Date=" + date + ",customerId" +customerId  + ", orderDetails=" + orderDetails + '}';
-        }
+    public String toString() {
+        return "PlaceOrder{" +
+                "orderId='" + orderId + '\'' +
+                ", date='" + date + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", customerBuyItemQty=" + customerBuyItemQty +
+                ", orderDetails=" + orderDetails +
+                '}';
     }
+}
 
 

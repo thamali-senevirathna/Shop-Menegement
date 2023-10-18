@@ -1,4 +1,4 @@
-package cotroller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
     public BorderPane root;
     public Button btnLogOut;
+    public Button btnOrder;
     private Stage stage;
     private Scene scene;
     private Parent parent;
@@ -28,7 +29,7 @@ public class DashboardController implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.setY(0);
-        stage.setX(0);
+        stage.setX(10);
     }
     public void btnCustomerAction(ActionEvent actionEvent) throws IOException {
         URL resource = this.getClass().getResource("/view/Customer.fxml");

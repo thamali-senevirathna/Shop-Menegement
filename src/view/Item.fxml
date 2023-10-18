@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="571.0" prefWidth="478.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-color: #00CCCC; -fx-border-width: 8px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotroller.ItemFormController">
+<AnchorPane prefHeight="571.0" prefWidth="478.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-color: #00CCCC; -fx-border-width: 8px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemFormController">
    <children>
       <Label alignment="CENTER" layoutX="49.0" layoutY="34.0" prefHeight="67.0" prefWidth="379.0" style="-fx-background-color: #009999; -fx-background-radius: 9px; -fx-border-color: #00CCCC; -fx-border-radius: 9px;" text="Item  Form">
          <font>
@@ -42,7 +42,7 @@
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemQtyOnHand" layoutX="270.0" layoutY="166.0" prefHeight="36.0" prefWidth="175.0" promptText="      Unit Price">
+      <TextField fx:id="txtItemUnitPrice" layoutX="270.0" layoutY="166.0" prefHeight="36.0" prefWidth="175.0" promptText="      Unit Price">
          <font>
             <Font name="Georgia" size="19.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemQty" layoutX="270.0" layoutY="228.0" prefHeight="36.0" prefWidth="175.0" promptText="            Qty">
+      <TextField fx:id="txtItemQtyOnHand" alignment="CENTER" layoutX="270.0" layoutY="228.0" prefHeight="36.0" prefWidth="175.0" promptText="Qty On Hand">
          <font>
             <Font name="Georgia" size="19.0" />
          </font>
