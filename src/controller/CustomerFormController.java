@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class CustomerFormController1 implements Initializable{
+public class CustomerFormController implements Initializable{
 
         public TextField txtCustId;
 
@@ -30,11 +30,11 @@ public class CustomerFormController1 implements Initializable{
         public TableColumn clmCustAddress;
         public TableColumn clmCustSalary;
         private List<String> customerId;
-       CustomerController1 customerController;
+       CustomerController customerController;
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-            customerController = new CustomerController1();
+            customerController = new CustomerController();
             setCellValueFactory();
             loadTable();
             tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

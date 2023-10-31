@@ -5,77 +5,59 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Customer;
+import util.CrudUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 
-public class CustomerController1 implements CustomerService {
+public class CustomerController implements CustomerService {
 
 
     @Override
     public boolean addCustomer(Customer customer) {
-        String SQL = "Insert into Customer Values(?,?,?,?)";
-
         int i = -1;
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement psTm = connection.prepareStatement(SQL);
-            psTm.setObject(1, customer.getCustomerId());
-            psTm.setObject(2, customer.getName());
-            psTm.setObject(3, customer.getAddress());
-            psTm.setObject(4, customer.getSalary());
-            i = psTm.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+          i = CrudUtil.execute("Insert into Customer Values(?,?,?,?)",
+                    customer.getCustomerId(),
+                    customer.getName(),
+                    customer.getAddress(),
+                    customer.getSalary()
+            );
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-        return i > 0 ? true : false;
+        return i > 0;
     }
-
     @Override
     public boolean updateCustomer(Customer customer) {
-        String SQL = "Update Customer set name=?, address=?, salary=? where id=?";
-        Connection connection = null;
+        int i = -1;
         try {
-            connection = DBConnection.getInstance().getConnection();
-            PreparedStatement psTm = connection.prepareStatement(SQL);
-            psTm.setObject(1, customer.getName());
-            psTm.setObject(2, customer.getAddress());
-            psTm.setObject(3, customer.getSalary());
-            psTm.setObject(4, customer.getCustomerId());
-            int i = psTm.executeUpdate();
-            return i > 0 ? true : false;
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            i = CrudUtil.execute("Update Customer set name=?, address=?, salary=? where id=?",
+                    customer.getName(),
+                    customer.getAddress(),
+                    customer.getSalary(),
+                    customer.getCustomerId()
+            );
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return false;
+        return i>0;
     }
 
     @Override
     public Customer searchCustomer(String customerId) {
-        String SQL = "Select * From Customer where id='" + customerId + "'";
 
-        Connection connection = null;
-
+        int i=-1;
         try {
-            connection = DBConnection.getInstance().getConnection();
-            Statement stm = connection.createStatement();
-            ResultSet resultSet = stm.executeQuery(SQL);
-            if (resultSet.next()) {
-                Customer customer = new Customer(customerId, resultSet.getString("name"), resultSet.getString("address"), resultSet.getDouble("salary"));
-                return customer;
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+            i=CrudUtil.execute("Select * From Customer where id='" + customerId + "'",
+
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
+
 
     @Override
     public boolean deleteCustomer(String customerId) {
@@ -86,7 +68,7 @@ public class CustomerController1 implements CustomerService {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0 ? true : false;
+        return i > 0;
     }
 
     @Override

@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="571.0" prefWidth="478.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-color: #00CCCC; -fx-border-width: 8px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController1">
+<AnchorPane prefHeight="571.0" prefWidth="478.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-color: #00CCCC; -fx-border-width: 8px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
    <children>
       <Label alignment="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="67.0" prefWidth="413.0" style="-fx-background-color: #009999; -fx-background-radius: 9px; -fx-border-color: #00CCCC; -fx-border-radius: 9px;" text="Customer Form ">
          <font>

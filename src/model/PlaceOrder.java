@@ -1,14 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlaceOrder {
         private String orderId;
-        private String date;
+        private Date date;
         private String customerId;
         private int customerBuyItemQty;
     private ArrayList<OrderDetails> orderDetails;
-        public PlaceOrder(String orderId, String date, String customerId,int customerBuyItemQty, ArrayList<OrderDetails> orderDetails) {
+        public PlaceOrder(String orderId, Date date, String customerId,int customerBuyItemQty, ArrayList<OrderDetails> orderDetails) {
             this.orderId = orderId;
             this.date = date;
             this.customerId = customerId;
@@ -23,11 +24,11 @@ public class PlaceOrder {
         this.orderId = orderId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

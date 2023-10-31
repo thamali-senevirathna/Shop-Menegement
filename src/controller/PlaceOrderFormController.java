@@ -1,7 +1,7 @@
 package controller;
 
+import db.DBConnection;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -10,14 +10,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import model.CustomerBuyItem;
 import model.Item;
+import model.OrderDetails;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class placeOrderFormController implements Initializable {
+public class PlaceOrderFormController implements Initializable {
     public TextField txtCustomerName;
     public ComboBox cmbCustomerId;
     public ComboBox cmbItemCode;
@@ -37,7 +40,7 @@ public class placeOrderFormController implements Initializable {
     public TextField txtItemQtyOnHand;
     public TextField txtCustomerBuyItemQty;
     public Label txtTotal;
-    CustomerController1 customerController1;
+    CustomerController customerController1;
     ItemController itemController;
     Date date;
     public ObservableList<CustomerBuyItem>cartList= FXCollections.observableArrayList();
@@ -45,7 +48,7 @@ public class placeOrderFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        customerController1 = new CustomerController1();
+        customerController1 = new CustomerController();
         itemController = new ItemController();
         clmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         clmDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -64,7 +67,7 @@ public class placeOrderFormController implements Initializable {
     }
 
     void loadCustomerIDS() {
-        ArrayList<String> customerIds = new CustomerController1().getCustomerId();
+        ArrayList<String> customerIds = new CustomerController().getCustomerId();
         cmbCustomerId.getItems().addAll(customerIds);
 
     }
@@ -158,9 +161,18 @@ public class placeOrderFormController implements Initializable {
 
     }
 
+
+
     public void btnPlaceOrder(ActionEvent actionEvent) {
+        String orderId=lblOrderId.getText();
+        String customerId = (String) cmbCustomerId.getValue();
+        String orderDate=lblDate.getText();
+
+        ArrayList<OrderDetails>orderDetailsArrayList=new ArrayList<>();
+
     }
-   /* private void setOrderId() {
+
+   private void setOrderId() {
         try {
             String lastOrderId = getLastOrderId();
             if (lastOrderId != null) {
@@ -176,17 +188,10 @@ public class placeOrderFormController implements Initializable {
         }
     }
 
-    public String getLastOrderId() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement stm = connection.createStatement();
-        ResultSet rst = stm.executeQuery("SELECT id FROM Orders ORDER BY id DESC LIMIT 1");
+    public String getLastOrderId() throws SQLException, ClassNotFoundException, SQLException {
+        ResultSet rst = DBConnection.getInstance().getConnection().createStatement().executeQuery("SELECT id FROM Orders ORDER BY id DESC LIMIT 1");
         return rst.next() ? rst.getString("id") : null;
     }
 
 
-
-    public void btnPlaceOrder(ActionEvent actionEvent) {
-
-    }*/
-
-}
+    }
