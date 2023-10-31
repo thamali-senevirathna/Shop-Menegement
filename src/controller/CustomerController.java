@@ -61,7 +61,7 @@ public class CustomerController implements CustomerService {
     public boolean deleteCustomer(String customerId) {
         int i = 0;
         try {
-            i = DBConnection.getInstance().getConnection().createStatement().executeUpdate("Delete From Customer where id='" + customerId + "'");
+            i = CrudUtil.execute("Delete From Customer where id= ?",customerId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
