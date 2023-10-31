@@ -48,10 +48,9 @@ public class CustomerController implements CustomerService {
     @Override
     public Customer searchCustomer(String customerId) {
         try {
-             ResultSet rst= CrudUtil.execute("Select * From Customer where id='" + customerId + "'");
+             ResultSet rst= CrudUtil.execute("select * From Customer where id= ?",customerId);
             rst.next();
             return new Customer(rst.getString(1),rst.getString(2),rst.getString(3), rst.getDouble(4));
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

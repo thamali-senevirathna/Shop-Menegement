@@ -80,15 +80,18 @@ public class CustomerFormController implements Initializable{
 
         }
 
-        public void btnSearchAction(ActionEvent actionEvent) {
+        public void btnSearchAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
             Customer customer = customerController.searchCustomer(txtCustId.getText());
-            if (customer == null) {
+            System.out.println(customer);
+            if (customer != null) {
+                txtCustName.setText(customer.getName());
+                txtCustAddress.setText(customer.getAddress());
+                txtCustSalary.setText(String.valueOf(customer.getSalary()));
+
+            }else {
                 new Alert(Alert.AlertType.ERROR, "Customer Not Found !").show();
-                clear();
             }
-            txtCustName.setText(customer.getName());
-            txtCustAddress.setText(customer.getAddress());
-            txtCustSalary.setText(String.valueOf(customer.getSalary()));
+//            clear();
         }
 
         public void btnDeleteAction(ActionEvent actionEvent) {

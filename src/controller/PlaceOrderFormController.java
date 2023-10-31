@@ -40,7 +40,7 @@ public class PlaceOrderFormController implements Initializable {
     public TextField txtItemQtyOnHand;
     public TextField txtCustomerBuyItemQty;
     public Label txtTotal;
-    CustomerController customerController1;
+    CustomerController customerController;
     ItemController itemController;
     Date date;
     public ObservableList<CustomerBuyItem>cartList= FXCollections.observableArrayList();
@@ -48,7 +48,7 @@ public class PlaceOrderFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        customerController1 = new CustomerController();
+        customerController = new CustomerController();
         itemController = new ItemController();
         clmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         clmDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -84,12 +84,12 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     public void setCustomerData(String id) {
-        Customer customer = customerController1.searchCustomer(id);
+        Customer customer = customerController.searchCustomer(id);
         if (customer != null) {
             txtCustomerName.setText(customer.getName());
             txtAddress.setText(customer.getAddress());
             txtSalary.setText(String.valueOf(customer.getSalary()));
-            return;
+            return ;
         }
         new Alert(Alert.AlertType.ERROR, "Customer Is not found !").show();
     }
