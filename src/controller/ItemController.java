@@ -6,71 +6,77 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Customer;
 import model.Item;
+import util.CrudUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ItemController implements ItemService{
     @Override
-    public boolean addItem(Item item) {
-        String SQL = "Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?";
-        Connection connection = null;
+    public boolean addItem(Item item){
+        int i = -1;
         try {
-            connection = DBConnection.getInstance().getConnection();
-            PreparedStatement psTm = connection.prepareStatement(SQL);
-            psTm.setObject(1, item.getItemCode());
-            psTm.setObject(2, item.getDescription());
-            psTm.setObject(3, item.getUnitPrice());
-            psTm.setObject(4, item.getQtyOnHand());
-            int i = psTm.executeUpdate();
-            return i > 0 ? true : false;
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            i = CrudUtil.execute("Insert into Item Values(?,?,?,?)",
+                    item.getItemCode(),
+                    item.getDescription(),
+                    item.getUnitPrice(),
+                    item.getQtyOnHand()
+            );
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return false;
+        return i > 0;
     }
+
+
+
 
     @Override
     public boolean updateItem(Item item) {
-        String SQL = "Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?";
-        Connection connection = null;
+        int i = -1;
         try {
-            connection = DBConnection.getInstance().getConnection();
-            PreparedStatement psTm = connection.prepareStatement(SQL);
-            psTm.setObject(1, item.getDescription());
-            psTm.setObject(2, item.getUnitPrice());
-            psTm.setObject(3, item.getQtyOnHand());
-            psTm.setObject(4, item.getItemCode());
-            int i = psTm.executeUpdate();
-            return i > 0 ? true : false;
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            i = CrudUtil.execute("Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?",
+                    item.getItemCode(),
+                    item.getDescription(),
+                    item.getUnitPrice(),
+                    item.getQtyOnHand()
+            );
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return false;
+        return i>0;
     }
 
     @Override
     public Item searchItem(String code) {
-        String SQL = "Select * From Item where code='" + code + "'";
-
-        Connection connection = null;
-
         try {
-            connection = DBConnection.getInstance().getConnection();
-            Statement stm = connection.createStatement();
-            ResultSet resultSet = stm.executeQuery(SQL);
-            if (resultSet.next()) {
-                Item item = new Item(code, resultSet.getString("description"), resultSet.getDouble("unitPrice"), resultSet.getInt("qtyOnHand"));
-                return item;
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+            ResultSet rst= CrudUtil.execute("select * From Item where code= ?",code);
+            rst.next();
+            return new Item(rst.getString(1),rst.getString(2),rst.getDouble(3), rst.getInt(4));
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
 
+    @Override
+    public ObservableList<Item> getAllItem() {
+        String SQL = "Select * From Item";
+        ObservableList<Item> itemList = FXCollections.observableArrayList();
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement stm = connection.createStatement();
+            ResultSet rst = stm.executeQuery(SQL);
+
+            while (rst.next()) {
+                Item item = new Item(rst.getString("code"), rst.getString("description"), rst.getDouble("unitPrice"), rst.getInt("qtyOnHand"));
+                itemList.add(item);
+            }
+            return itemList;
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -78,33 +84,12 @@ public class ItemController implements ItemService{
     public boolean deleteItem(String code) {
         int i = 0;
         try {
-            i = DBConnection.getInstance().getConnection().createStatement().executeUpdate("Delete From Item where code='" + code + "'");
+            i = CrudUtil.execute("Delete From Item where code= ?",code);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0 ? true : false;
-    }
-
-    @Override
-    public ObservableList<Item> getAllItem() {
-        String SQL = "Select * From Item";
-        ObservableList<Item> list = FXCollections.observableArrayList();
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            Statement stm = connection.createStatement();
-            ResultSet rst = stm.executeQuery(SQL);
-
-            while (rst.next()) {
-                Item item = new Item(rst.getString("code"), rst.getString("description"), rst.getInt("unitPrice"), rst.getInt("qtyOnHand"));
-                list.add(item);
-            }
-            return list;
-
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return i > 0;
     }
     public ArrayList<String> getItemCode(){
         ArrayList<String> codes=new ArrayList<>();

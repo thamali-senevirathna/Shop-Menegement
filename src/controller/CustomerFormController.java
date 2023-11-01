@@ -87,11 +87,10 @@ public class CustomerFormController implements Initializable{
                 txtCustName.setText(customer.getName());
                 txtCustAddress.setText(customer.getAddress());
                 txtCustSalary.setText(String.valueOf(customer.getSalary()));
-
             }else {
                 new Alert(Alert.AlertType.ERROR, "Customer Not Found !").show();
             }
-//            clear();
+          clear();
         }
 
         public void btnDeleteAction(ActionEvent actionEvent) {

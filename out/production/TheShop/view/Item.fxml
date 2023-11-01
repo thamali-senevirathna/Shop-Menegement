@@ -37,7 +37,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <TextField fx:id="txtItemCode" layoutX="43.0" layoutY="166.0" onAction="#txtOnAcrion" prefHeight="36.0" prefWidth="175.0" promptText="    Item Code">
+      <TextField fx:id="txtItemCode" layoutX="43.0" layoutY="166.0" onAction="#txtOnAction" prefHeight="36.0" prefWidth="175.0" promptText="    Item Code">
          <font>
             <Font name="Georgia" size="19.0" />
          </font>
@@ -61,8 +61,9 @@
         <columns>
           <TableColumn fx:id="clmItemCode" prefWidth="75.0" text="Item Code" />
           <TableColumn fx:id="clmItemDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="clmItemQtyOnHand" prefWidth="75.0" text="Unit Price" />
+            <TableColumn fx:id="clmItemUnitPrice" prefWidth="75.0" text="Unit Price" />
             <TableColumn fx:id="clmItemQty" prefWidth="75.0" text="Qty" />
+
         </columns>
       </TableView>
       <Button layoutX="27.0" layoutY="524.0" mnemonicParsing="false" onAction="#btnItemDeleteAction" style="-fx-border-color: #404040; -fx-border-radius: 3px;" text="Delete" />

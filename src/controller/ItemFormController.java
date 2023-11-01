@@ -7,10 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
 import model.Item;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
@@ -23,30 +27,81 @@ public class ItemFormController implements Initializable {
     public TableColumn clmItemDescription;
     public TableColumn clmItemQtyOnHand;
     public TableColumn clmItemQty;
+    public TableColumn clmItemUnitPrice;
+    ItemController itemController;
 
-
-    public void btnItemAddAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        try{
-            Item item = new Item(
-                    txtItemCode.getText(),
-                    txtItemDescription.getText(),
-                    Integer.parseInt(txtItemUnitPrice.getText()),
-                    Integer.parseInt(txtItemQtyOnHand.getText()
-                    ));
-            boolean addedItem = new ItemController().addItem(item);
-            if (addedItem){
-                new Alert(Alert.AlertType.INFORMATION, "Added success !").show();
-            }else{
-                new Alert(Alert.AlertType.ERROR, "Added Failed !").show();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        itemController = new ItemController();
+        setCellValueFactory();
+        loadTable();
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null != newValue) {
+                setTableValuesToTxt(newValue);
             }
+        });
+    }
+    public void btnItemAddAction(ActionEvent actionEvent) {
+        String itemCode = txtItemCode.getText();
+        String description = txtItemDescription.getText();
+        double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtItemQtyOnHand.getText());
+        Item item = new Item(itemCode, description, unitPrice, qtyOnHand);
 
-
-        }catch (NumberFormatException ex){
-            new Alert(Alert.AlertType.ERROR, "Added Failed").show();
+        Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to add this item ?", ButtonType.YES, ButtonType.NO).showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            boolean isAdd = itemController.addItem(item);
+            clear();
+            if (isAdd) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Added !").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+            }
         }
 
     }
+    public void btnItemUpdateAction(ActionEvent actionEvent) {
+        String itemCode = txtItemCode.getText();
+        String description = txtItemDescription.getText();
+        double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtItemQtyOnHand.getText());
+        Item item = new Item(itemCode, description, unitPrice, qtyOnHand);
+        boolean isUpdated = itemController.updateItem(item);
+        if (isUpdated) {
+            new Alert(Alert.AlertType.INFORMATION, "Item Updated !").show();
+            clear();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+        }
 
+    }
+    public void btnItemSearchAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Item item = itemController.searchItem(txtItemCode.getText());
+//        System.out.println(item);
+        if (item != null) {
+            txtItemDescription.setText(item.getDescription());
+            txtItemUnitPrice.setText(String.valueOf(item.getUnitPrice()));
+            txtItemQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Item Not Found !").show();
+        }
+        clear();
+    }
+    public void btnItemDeleteAction(ActionEvent actionEvent) {
+        String itemCodes = txtItemCode.getText();
+        boolean isDeleted;
+        Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to Delete this customer?", ButtonType.YES, ButtonType.NO).showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            isDeleted = itemController.deleteItem(itemCodes);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Deleted !").show();
+                clear();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+            }
+        }
+
+    }
     public void btnItemCancelAction(ActionEvent actionEvent) {
         clear();
     }
@@ -57,101 +112,42 @@ public class ItemFormController implements Initializable {
         txtItemQtyOnHand.setText("");
     }
 
-    public void btnItemSearchAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String SQL="Select * From Item where Code= '"+txtItemCode.getText()+"'";
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement statement=connection.createStatement();
-        ResultSet rst=statement.executeQuery(SQL);
-        if(rst.next()){
-            Item item= new Item(txtItemCode.getText(),rst.getString(2),rst.getInt(3),rst.getInt(4));
-            txtItemDescription.setText(item.getDescription());
-            txtItemUnitPrice.setText(item.getUnitPrice()+"");
-            txtItemQtyOnHand.setText(item.getQtyOnHand()+"");
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Item not found !").show();
-        }
 
+    private void loadTable() {
+        ObservableList<Item> allItem = itemController.getAllItem();
+        tblItem.setItems(allItem);
     }
 
-    public void btnItemUpdateAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String SQL="Update Item set description=?,unitPrice=?,qtyOnHand=? where Code=?";
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-        preparedStatement.setObject(1,txtItemDescription.getText());
-        preparedStatement.setObject(2,txtItemUnitPrice.getText());
-        preparedStatement.setObject(3,txtItemQtyOnHand.getText());
-        preparedStatement.setObject(4,txtItemCode.getText());
-
-        if(preparedStatement.executeUpdate()>0){
-            new Alert(Alert.AlertType.INFORMATION, "Update success !").show();
-            clear();
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Update Failed !").show();
-        }
-
+    public void setTableValuesToTxt(Object newValue) {
+        Item item= (Item) newValue;
+        txtItemCode.setText(item.getItemCode());
+        txtItemDescription.setText(((Item) newValue).getDescription());
+        txtItemUnitPrice.setText(String.valueOf(((Item) newValue).getUnitPrice()));
+        txtItemQtyOnHand.setText(String.valueOf(((Item) newValue).getQtyOnHand()));
     }
 
-    public void btnItemDeleteAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String SQL="Delete From Item where Code='"+txtItemCode.getText()+"'";
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement statement = connection.createStatement();
-        int i = statement.executeUpdate(SQL);
-        if(i>=0){
-            new Alert(Alert.AlertType.INFORMATION, "Deleted success !").show();
-            clear();
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Deleted Failed !").show();
-        }
-    }
-    public void setTableValuesToTxt(Item newValue){
-        txtItemCode.setText(newValue.getItemCode());
-        txtItemDescription.setText(newValue.getDescription());
-        txtItemUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
-        txtItemQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
-    }
-    public void loadTable(){
+    private void setCellValueFactory() {
         clmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         clmItemDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        clmItemQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        clmItemUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         clmItemQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-
-        String SQL ="Select * From Item";
-        ObservableList<Item> list = FXCollections.observableArrayList();
-        Connection connection = null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL);
-            while (resultSet.next()){
-                Item item=new Item(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                list.add(item);
-            }
-            tblItem.setItems(list);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadTable();
-        tblItem.getSelectionModel().selectedItemProperty().addListener((observable,
-                                                                            oldValue,
-                                                                            newValue) -> {
-            if (newValue!=null) {
-                setTableValuesToTxt((Item) newValue);
-            }
-        });
-    }
-
-    public void txtOnAcrion(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void txtOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         btnItemSearchAction( actionEvent);
     }
-
     public void btnRefreshOnAction(ActionEvent actionEvent) {
         loadTable();
+    }
+
+    public List<String> getItemCodes() throws SQLException, ClassNotFoundException {
+        ResultSet rst = DBConnection.getInstance().getConnection().prepareStatement("SELECT * FROM Item").executeQuery();
+        List<String> codes = new ArrayList<>();
+        while (rst.next()) {
+            codes.add(
+                    rst.getString(1)
+            );
+
+        }
+        return codes;
     }
 }
