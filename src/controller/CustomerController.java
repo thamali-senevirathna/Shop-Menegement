@@ -16,9 +16,8 @@ public class CustomerController implements CustomerService {
 
     @Override
     public boolean addCustomer(Customer customer) {
-        int i = -1;
         try {
-          i = CrudUtil.execute("Insert into Customer Values(?,?,?,?)",
+          return CrudUtil.execute("Insert into Customer Values(?,?,?,?)",
                     customer.getCustomerId(),
                     customer.getName(),
                     customer.getAddress(),
@@ -27,13 +26,13 @@ public class CustomerController implements CustomerService {
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0;
+        return false;
     }
     @Override
     public boolean updateCustomer(Customer customer) {
-        int i = -1;
+
         try {
-            i = CrudUtil.execute("Update Customer set name=?, address=?, salary=? where id=?",
+            return CrudUtil.execute("Update Customer set name=?, address=?, salary=? where id=?",
                     customer.getName(),
                     customer.getAddress(),
                     customer.getSalary(),
@@ -42,7 +41,7 @@ public class CustomerController implements CustomerService {
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i>0;
+        return false;
     }
 
     @Override
@@ -59,14 +58,13 @@ public class CustomerController implements CustomerService {
 
     @Override
     public boolean deleteCustomer(String customerId) {
-        int i = 0;
         try {
-            i = CrudUtil.execute("Delete From Customer where id= ?",customerId);
+            return CrudUtil.execute("Delete From Customer where id= ?",customerId);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0;
+        return false;
     }
 
     @Override

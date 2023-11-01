@@ -70,12 +70,15 @@ public class CustomerFormController implements Initializable{
             String address = txtCustAddress.getText();
             double salary = Double.parseDouble(txtCustSalary.getText());
             Customer customer = new Customer(customerId, name, address, salary);
-            boolean isUpdated = customerController.updateCustomer(customer);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.INFORMATION, "Customer Updated !").show();
+            Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to update this customer?", ButtonType.YES, ButtonType.NO).showAndWait();
+            if (buttonType.get() == ButtonType.YES) {
+                boolean isUpdated = customerController.updateCustomer(customer);
                 clear();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.INFORMATION, "Customer Updated !").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+                }
             }
 
         }
@@ -90,7 +93,6 @@ public class CustomerFormController implements Initializable{
             }else {
                 new Alert(Alert.AlertType.ERROR, "Customer Not Found !").show();
             }
-          clear();
         }
 
         public void btnDeleteAction(ActionEvent actionEvent) {

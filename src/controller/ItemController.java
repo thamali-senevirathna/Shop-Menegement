@@ -14,9 +14,8 @@ import java.util.ArrayList;
 public class ItemController implements ItemService{
     @Override
     public boolean addItem(Item item){
-        int i = -1;
         try {
-            i = CrudUtil.execute("Insert into Item Values(?,?,?,?)",
+            return CrudUtil.execute("Insert into Item Values(?,?,?,?)",
                     item.getItemCode(),
                     item.getDescription(),
                     item.getUnitPrice(),
@@ -25,7 +24,7 @@ public class ItemController implements ItemService{
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0;
+        return false;
     }
 
 
@@ -33,18 +32,17 @@ public class ItemController implements ItemService{
 
     @Override
     public boolean updateItem(Item item) {
-        int i = -1;
         try {
-            i = CrudUtil.execute("Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?",
-                    item.getItemCode(),
+            return CrudUtil.execute("Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?",
                     item.getDescription(),
                     item.getUnitPrice(),
-                    item.getQtyOnHand()
-            );
+                    item.getQtyOnHand(),
+                    item.getItemCode()
+                    );
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i>0;
+        return false;
     }
 
     @Override
@@ -82,14 +80,13 @@ public class ItemController implements ItemService{
 
     @Override
     public boolean deleteItem(String code) {
-        int i = 0;
         try {
-            i = CrudUtil.execute("Delete From Item where code= ?",code);
+            return CrudUtil.execute("Delete From Item where code= ?",code);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        return i > 0;
+        return false;
     }
     public ArrayList<String> getItemCode(){
         ArrayList<String> codes=new ArrayList<>();

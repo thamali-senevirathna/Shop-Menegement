@@ -66,18 +66,22 @@ public class ItemFormController implements Initializable {
         double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
         int qtyOnHand = Integer.parseInt(txtItemQtyOnHand.getText());
         Item item = new Item(itemCode, description, unitPrice, qtyOnHand);
-        boolean isUpdated = itemController.updateItem(item);
-        if (isUpdated) {
-            new Alert(Alert.AlertType.INFORMATION, "Item Updated !").show();
-            clear();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+        Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to update this item?", ButtonType.YES, ButtonType.NO).showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            boolean isUpdated = itemController.updateItem(item);
+            System.out.println(item);
+          clear();
+            if (isUpdated) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Updated !").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
+            }
         }
 
     }
     public void btnItemSearchAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Item item = itemController.searchItem(txtItemCode.getText());
-//        System.out.println(item);
+       System.out.println(item);
         if (item != null) {
             txtItemDescription.setText(item.getDescription());
             txtItemUnitPrice.setText(String.valueOf(item.getUnitPrice()));
@@ -85,7 +89,7 @@ public class ItemFormController implements Initializable {
         }else {
             new Alert(Alert.AlertType.ERROR, "Item Not Found !").show();
         }
-        clear();
+
     }
     public void btnItemDeleteAction(ActionEvent actionEvent) {
         String itemCodes = txtItemCode.getText();
