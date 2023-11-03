@@ -1,18 +1,20 @@
 package model;
 
 public class Item {
-    public int getCustomerBuyItemQty;
+
     private String itemCode;
-   private String description;
+    private String description;
     private double unitPrice;
     private int stock;
+    private int qty;
 
 
-    public Item(String itemCode, String description, double unitPrice, int stock) {
+    public Item(String itemCode, String description, double unitPrice, int stock,int qty) {
         this.itemCode = itemCode;
         this.description = description;
         this.unitPrice = unitPrice;
         this.stock = stock;
+        this.qty=qty;
     }
 
     public String getItemCode() {
@@ -39,11 +41,17 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    public int getStock() {
-        return stock;
+    public int getStock() {return stock;}
+
+    public void setStock(int stock) {this.stock = stock;}
+
+    public int getQty() {
+        return qty;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
+
+
 }

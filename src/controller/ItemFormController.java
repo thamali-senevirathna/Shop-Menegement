@@ -47,7 +47,8 @@ public class ItemFormController implements Initializable {
         String description = txtItemDescription.getText();
         double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
         int stock = Integer.parseInt(txtItemStock.getText());
-        Item item = new Item(itemCode, description, unitPrice, stock);
+        int qty=Integer.parseInt(txtItemQty.getText());
+        Item item = new Item(itemCode, description, unitPrice, stock,qty);
 
         Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to add this item ?", ButtonType.YES, ButtonType.NO).showAndWait();
         if (buttonType.get() == ButtonType.YES) {
@@ -66,7 +67,8 @@ public class ItemFormController implements Initializable {
         String description = txtItemDescription.getText();
         double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
         int stock = Integer.parseInt(txtItemStock.getText());
-        Item item = new Item(itemCode, description, unitPrice, stock);
+        int qty=Integer.parseInt(txtItemQty.getText());
+        Item item = new Item(itemCode, description, unitPrice, stock,qty);
         Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to update this item?", ButtonType.YES, ButtonType.NO).showAndWait();
         if (buttonType.get() == ButtonType.YES) {
             boolean isUpdated = itemController.updateItem(item);
@@ -87,6 +89,7 @@ public class ItemFormController implements Initializable {
             txtItemDescription.setText(item.getDescription());
             txtItemUnitPrice.setText(String.valueOf(item.getUnitPrice()));
             txtItemStock.setText(String.valueOf(item.getStock()));
+            txtItemQty.setText(String.valueOf(item.getQty()));
         }else {
             new Alert(Alert.AlertType.ERROR, "Item Not Found !").show();
         }
@@ -115,6 +118,7 @@ public class ItemFormController implements Initializable {
         txtItemDescription.setText("");
         txtItemUnitPrice.setText("");
         txtItemStock.setText("");
+        txtItemQty.setText("");
     }
 
 
@@ -129,6 +133,7 @@ public class ItemFormController implements Initializable {
         txtItemDescription.setText(((Item) newValue).getDescription());
         txtItemUnitPrice.setText(String.valueOf(((Item) newValue).getUnitPrice()));
         txtItemStock.setText(String.valueOf(((Item) newValue).getStock()));
+        txtItemQty.setText(String.valueOf(((Item) newValue).getQty()));
     }
 
     private void setCellValueFactory() {
@@ -136,6 +141,7 @@ public class ItemFormController implements Initializable {
         clmItemDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         clmItemUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         clmItemStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        clmItemQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
     public void txtOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         btnItemSearchAction( actionEvent);

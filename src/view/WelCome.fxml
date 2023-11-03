@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,13 +10,13 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WellComeController">
    <children>
-      <AnchorPane prefHeight="523.0" prefWidth="312.0" style="-fx-background-color: #AFEEEE; -fx-background-radius: 9px; -fx-border-radius: 9px; -fx-border-width: 4px; -fx-border-color: #5F9EA0;">
+      <AnchorPane prefHeight="523.0" prefWidth="655.0" style="-fx-background-color: #AFEEEE; -fx-background-radius: 9px; -fx-border-radius: 9px; -fx-border-width: 4px; -fx-border-color: #606060;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="480.0" layoutX="19.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" width="274.0">
                <fill>
@@ -35,52 +36,52 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="33.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="357.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-w-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="73.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="390.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-e-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="110.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="419.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-l-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="148.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="449.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-c-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="194.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="482.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-o-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="217.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="519.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-m-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="230.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="554.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-e-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="260.0" fitWidth="206.0" layoutX="102.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="200.0" fitWidth="144.0" layoutX="222.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/casual-life-3d-girl-sitting-on-stool-with-laptop-1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="211.0" fitWidth="225.0" layoutX="7.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="169.0" fitWidth="191.0" layoutX="45.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/matey-two-female-recruiters-discuss-job-candidates.png" />
                </image>
             </ImageView>
-            <Button layoutX="143.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnLogAction" opacity="0.53" prefHeight="43.0" prefWidth="56.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 3px; -fx-border-width: 2px; -fx-background-color: #FF00E6;">
+            <Button layoutX="462.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnLogAction" opacity="0.53" prefHeight="43.0" prefWidth="56.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 3px; -fx-border-width: 2px; -fx-background-color: #808080;">
                <font>
                   <Font name="Gabriola" size="20.0" />
                </font>
@@ -108,11 +109,81 @@
                   </ImageView>
                </graphic>
             </Button>
-            <PasswordField fx:id="txtPassword" layoutX="85.0" layoutY="402.0" onAction="#txtPsOnAction" opacity="0.73" prefHeight="34.0" prefWidth="171.0" promptText="     Password" style="-fx-background-color: #FFFFF0; -fx-border-color: #C0C0C0; -fx-border-radius: 3px; -fx-border-width: 2px;">
+            <PasswordField fx:id="txtPassword" layoutX="407.0" layoutY="245.0" onAction="#txtPsOnAction" opacity="0.73" prefHeight="34.0" prefWidth="171.0" promptText="* * * *" style="-fx-background-color: #FFFFF0; -fx-border-color: #C0C0C0; -fx-border-radius: 3px; -fx-border-width: 2px;">
                <font>
                   <Font name="Georgia" size="19.0" />
                </font>
             </PasswordField>
+            <Label layoutX="360.0" layoutY="250.0" text="PIN">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Circle layoutX="156.0" layoutY="97.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 1px;">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.13880130996463427">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.14267922937870026" green="0.1460084170103073" blue="0.14912280440330505" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <ImageView fitHeight="120.0" fitWidth="113.0" layoutX="100.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/worky-happy-woman-going-shopping.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="28.0" prefWidth="87.0" text="ST/\">
+               <font>
+                  <Font name="Gabriola" size="34.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.6940062850807744" endY="0.5520504626565927" startX="0.6971609314157383" startY="0.0757097791798107">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.5600000023841858" green="0.02800000086426735" blue="0.07574518769979477" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.8100000023841858" green="0.6755021810531616" blue="0.2754000127315521" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="83.0" layoutY="195.0" prefHeight="28.0" prefWidth="161.0" text="SHOPING CENTER">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.6940062850807744" endY="1.0" startX="0.7003154574132492" startY="0.26813882532932026">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.8100000023841858" green="0.43815338611602783" blue="0.2754000127315521" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
          </children>
       </AnchorPane>
    </children>

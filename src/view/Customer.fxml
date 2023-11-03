@@ -16,12 +16,12 @@
 
 <AnchorPane prefHeight="571.0" prefWidth="478.0" style="-fx-background-color: #006666; -fx-background-radius: 7px; -fx-border-color: #00CCCC; -fx-border-width: 8px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
    <children>
-      <Label alignment="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="67.0" prefWidth="413.0" style="-fx-background-color: #009999; -fx-background-radius: 9px; -fx-border-color: #00CCCC; -fx-border-radius: 9px;" text="Customer Form ">
+      <Label alignment="CENTER" layoutX="33.0" layoutY="21.0" prefHeight="67.0" prefWidth="413.0" style="-fx-background-color: #009999; -fx-background-radius: 9px; -fx-border-color: #00CCCC; -fx-border-radius: 9px;" text="Customer Form ">
          <font>
             <Font name="Gabriola" size="52.0" />
          </font>
          <textFill>
-            <LinearGradient endX="0.02523659305993687" endY="0.9463722397476344" startX="0.01261829577785937" startY="0.5678233438485805">
+            <LinearGradient endX="0.02523659305993687" endY="0.9463722397476344" startX="0.01261829577785937" startY="1.0">
                <stops>
                   <Stop>
                      <color>
@@ -57,19 +57,19 @@
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblCustomer" layoutX="87.0" layoutY="292.0" prefHeight="200.0" prefWidth="303.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 10px;">
+      <TableView fx:id="tblCustomer" layoutX="45.0" layoutY="280.0" prefHeight="200.0" prefWidth="394.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 10px;">
         <columns>
-          <TableColumn fx:id="clmCustId" prefWidth="75.0" text="Customer Id" />
-          <TableColumn fx:id="clmCustName" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="clmCustAddress" prefWidth="75.0" text="Address" />
-            <TableColumn fx:id="clmCustSalary" prefWidth="75.0" text="Salary" />
+          <TableColumn fx:id="clmCustId" prefWidth="92.66662216186523" text="Customer Id" />
+          <TableColumn fx:id="clmCustName" prefWidth="99.33331298828125" text="Name" />
+            <TableColumn fx:id="clmCustAddress" prefWidth="103.33332824707031" text="Address" />
+            <TableColumn fx:id="clmCustSalary" prefWidth="98.00006103515625" text="Salary" />
         </columns>
       </TableView>
-      <Button layoutX="25.0" layoutY="534.0" mnemonicParsing="false" onAction="#btnDeleteAction" style="-fx-border-color: #404040; -fx-border-radius: 3px;" text="Delete" />
-      <Button layoutX="115.0" layoutY="534.0" mnemonicParsing="false" onAction="#btnUpdateAction" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Update" />
-      <Button layoutX="213.0" layoutY="534.0" mnemonicParsing="false" onAction="#btnSearchAction" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Search" />
-      <Button layoutX="309.0" layoutY="534.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="51.0" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Add" />
-      <Button layoutX="397.0" layoutY="533.0" mnemonicParsing="false" onAction="#btnCancelAction" style="-fx-border-radius: 3px; -fx-border-color: #404040; -fx-background-color: #C0C0C0;" text="Cancel">
+      <Button layoutX="25.0" layoutY="514.0" mnemonicParsing="false" onAction="#btnDeleteAction" style="-fx-border-color: #404040; -fx-border-radius: 3px;" text="Delete" />
+      <Button layoutX="115.0" layoutY="514.0" mnemonicParsing="false" onAction="#btnUpdateAction" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Update" />
+      <Button layoutX="213.0" layoutY="514.0" mnemonicParsing="false" onAction="#btnSearchAction" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Search" />
+      <Button layoutX="309.0" layoutY="514.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="25.0" prefWidth="51.0" style="-fx-border-radius: 3px; -fx-border-color: #404040;" text="Add" />
+      <Button layoutX="397.0" layoutY="513.0" mnemonicParsing="false" onAction="#btnCancelAction" style="-fx-border-radius: 3px; -fx-border-color: #404040; -fx-background-color: #C0C0C0;" text="Cancel">
          <textFill>
             <RadialGradient centerX="0.6734316639354748" centerY="0.5" radius="0.5">
                <stops>
@@ -88,19 +88,19 @@
          </textFill>
       </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="51.0" fitWidth="103.0" layoutX="53.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="103.0" layoutX="53.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icons8-customer-64%20(1).png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="51.0" fitWidth="103.0" layoutX="380.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="103.0" layoutX="380.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icons8-customer-64%20(1).png" />
          </image>
       </ImageView>
-      <Button layoutX="401.0" layoutY="91.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="38.0" prefWidth="41.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 45px;">
+      <Button layoutX="401.0" layoutY="101.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="8.0" prefWidth="41.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 45px;">
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-refresh-50%20(1).png" />
                </image>

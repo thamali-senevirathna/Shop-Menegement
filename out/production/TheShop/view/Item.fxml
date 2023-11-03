@@ -47,22 +47,23 @@
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemDescription" layoutX="43.0" layoutY="228.0" prefHeight="36.0" prefWidth="175.0" promptText="     Description">
+      <TextField fx:id="txtItemDescription" layoutX="43.0" layoutY="217.0" prefHeight="36.0" prefWidth="175.0" promptText="     Description">
          <font>
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemQtyOnHand" alignment="CENTER" layoutX="270.0" layoutY="228.0" prefHeight="36.0" prefWidth="175.0" promptText="Qty On Hand">
+      <TextField fx:id="txtItemQty" alignment="CENTER" layoutX="161.0" layoutY="268.0" prefHeight="36.0" prefWidth="175.0" promptText="Qty">
          <font>
             <Font name="Georgia" size="19.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblItem" layoutX="87.0" layoutY="292.0" prefHeight="200.0" prefWidth="304.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 10px;">
+      <TableView fx:id="tblItem" layoutX="33.0" layoutY="317.0" prefHeight="200.0" prefWidth="411.0" style="-fx-background-color: #CCFFFF; -fx-background-radius: 10px;">
         <columns>
-          <TableColumn fx:id="clmItemCode" prefWidth="75.0" text="Item Code" />
-          <TableColumn fx:id="clmItemDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="clmItemUnitPrice" prefWidth="75.0" text="Unit Price" />
-            <TableColumn fx:id="clmItemQty" prefWidth="75.0" text="Qty" />
+          <TableColumn fx:id="clmItemCode" prefWidth="74.00000381469727" text="Item Code" />
+          <TableColumn fx:id="clmItemDescription" prefWidth="85.33330535888672" text="Description" />
+            <TableColumn fx:id="clmItemUnitPrice" prefWidth="87.33332824707031" text="Unit Price" />
+            <TableColumn fx:id="clmItemStock" prefWidth="76.0" text="Stock" />
+            <TableColumn fx:id="clmItemQty" prefWidth="97.33331298828125" text="Qty" />
 
         </columns>
       </TableView>
@@ -130,8 +131,7 @@
             <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-refresh-50%20(1).png" />
-               </image>
-            </ImageView>
+               </image></ImageView>
          </graphic>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -150,5 +150,10 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <TextField fx:id="txtItemStock" alignment="CENTER" layoutX="270.0" layoutY="217.0" prefHeight="36.0" prefWidth="175.0" promptText="Stock">
+         <font>
+            <Font name="Georgia" size="19.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

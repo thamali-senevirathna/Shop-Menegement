@@ -7,13 +7,13 @@ public class PlaceOrder {
         private String orderId;
         private Date date;
         private String customerId;
-        private int customerBuyItemQty;
+        private int qty;
     private ArrayList<OrderDetails> orderDetails;
-        public PlaceOrder(String orderId, Date date, String customerId,int customerBuyItemQty, ArrayList<OrderDetails> orderDetails) {
+        public PlaceOrder(String orderId, Date date, String customerId,int qty, ArrayList<OrderDetails> orderDetails) {
             this.orderId = orderId;
             this.date = date;
             this.customerId = customerId;
-            this.customerBuyItemQty = customerBuyItemQty;
+            this.qty = qty;
             this.orderDetails = orderDetails;
         }
     public String getOrderId() {
@@ -39,13 +39,11 @@ public class PlaceOrder {
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
-    public int getCustomerBuyItemQty() {
-        return customerBuyItemQty;
+    public int getQty() {
+        return qty;
     }
 
-    public void setCustomerBuyItemQty(int customerBuyItemQty) {
-        this.customerBuyItemQty = customerBuyItemQty;
-    }
+    public void setQty(int qty) {this.qty = qty;}
 
     public ArrayList<OrderDetails> getOrderDetails() {
         return orderDetails;
@@ -61,7 +59,7 @@ public class PlaceOrder {
                 "orderId='" + orderId + '\'' +
                 ", date='" + date + '\'' +
                 ", customerId='" + customerId + '\'' +
-                ", customerBuyItemQty=" + customerBuyItemQty +
+                ", qty=" + qty +
                 ", orderDetails=" + orderDetails +
                 '}';
     }

@@ -5,13 +5,16 @@ public class CustomerBuyItem{
         private String description;
         private double unitPrice;
         private int qty;
+        private int stock;
         private double total;
 
-    public CustomerBuyItem( String itemCode, String description, double unitPrice, int qty, double total) {
+
+    public CustomerBuyItem( String itemCode, String description, double unitPrice, int qty,int stock, double total) {
         this.itemCode = itemCode;
         this.description = description;
         this.unitPrice = unitPrice;
         this.qty = qty;
+        this.stock=stock;
         this.total = total;
     }
 
@@ -45,6 +48,13 @@ public class CustomerBuyItem{
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public double getTotal() {

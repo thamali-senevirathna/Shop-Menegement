@@ -15,11 +15,12 @@ public class ItemController implements ItemService{
     @Override
     public boolean addItem(Item item){
         try {
-            return CrudUtil.execute("Insert into Item Values(?,?,?,?)",
+            return CrudUtil.execute("Insert into Item Values(?,?,?,?,?)",
                     item.getItemCode(),
                     item.getDescription(),
                     item.getUnitPrice(),
-                    item.getStock()
+                    item.getStock(),
+                    item.getQty()
             );
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -33,10 +34,11 @@ public class ItemController implements ItemService{
     @Override
     public boolean updateItem(Item item) {
         try {
-            return CrudUtil.execute("Update Item set description=?, unitPrice=?, qtyOnHand=? where code=?",
+            return CrudUtil.execute("Update Item set description=?, unitPrice=?, stock=? ,qty=? where code=?",
                     item.getDescription(),
                     item.getUnitPrice(),
-                    item.getQtyOnHand(),
+                    item.getStock(),
+                    item.getQty(),
                     item.getItemCode()
                     );
         } catch (SQLException | ClassNotFoundException e) {
@@ -50,7 +52,7 @@ public class ItemController implements ItemService{
         try {
             ResultSet rst= CrudUtil.execute("select * From Item where code= ?",code);
             rst.next();
-            return new Item(rst.getString(1),rst.getString(2),rst.getDouble(3), rst.getInt(4));
+            return new Item(rst.getString(1),rst.getString(2),rst.getDouble(3), rst.getInt(4),rst.getInt(5));
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -67,7 +69,7 @@ public class ItemController implements ItemService{
             ResultSet rst = stm.executeQuery(SQL);
 
             while (rst.next()) {
-                Item item = new Item(rst.getString("code"), rst.getString("description"), rst.getDouble("unitPrice"), rst.getInt("qtyOnHand"));
+                Item item = new Item(rst.getString("code"), rst.getString("description"), rst.getDouble("unitPrice"), rst.getInt("stock"),rst.getInt("qty"));
                 itemList.add(item);
             }
             return itemList;

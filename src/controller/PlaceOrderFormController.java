@@ -29,7 +29,8 @@ public class PlaceOrderFormController implements Initializable {
     public TableColumn clmItemCode;
     public TableColumn clmDescription;
     public TableColumn clmUnitPrice;
-    public TableColumn clmQtyOnHand;
+    public TableColumn clmStock;
+    public TableColumn clmQty;
     public TableColumn clmTotal;
     public Label lblDate;
     public TextField txtAddress;
@@ -37,8 +38,8 @@ public class PlaceOrderFormController implements Initializable {
     public TextField txtSalary;
     public TextField txtItemDescription;
     public TextField txtItemUnitPrice;
-    public TextField txtItemQtyOnHand;
-    public TextField txtCustomerBuyItemQty;
+    public TextField txtItemStock;
+    public TextField txtQty;
     public Label txtTotal;
     CustomerController customerController;
     ItemController itemController;
@@ -48,13 +49,15 @@ public class PlaceOrderFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setOrderId();
         customerController = new CustomerController();
         itemController = new ItemController();
         clmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         clmDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         clmUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        clmQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        clmQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         clmTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        clmStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         loadCustomerIDS();
         loadItemCodes();
         loadDate();
@@ -64,6 +67,7 @@ public class PlaceOrderFormController implements Initializable {
         cmbItemCode.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
             setItemData((String) newValue);
         });
+
     }
 
     void loadCustomerIDS() {
@@ -98,7 +102,8 @@ public class PlaceOrderFormController implements Initializable {
         if (item!=null){
             txtItemDescription.setText(item.getDescription());
             txtItemUnitPrice.setText(String.valueOf(item.getUnitPrice()));
-            txtItemQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
+            txtItemStock.setText(String.valueOf(item.getStock()));
+            txtQty.setText(String.valueOf(item.getQty()));
         }else {
             new Alert(Alert.AlertType.ERROR,"Item is not found !").show();
         }
@@ -120,18 +125,19 @@ public class PlaceOrderFormController implements Initializable {
         try{
             String itemCode = (String) cmbItemCode.getSelectionModel().getSelectedItem();
             String description = txtItemDescription.getText();
-            int qty = Integer.parseInt(txtCustomerBuyItemQty.getText());
             double unitPrice = Double.parseDouble(txtItemUnitPrice.getText());
+            int stock = Integer.parseInt(txtItemStock.getText());
+            int qty = Integer.parseInt(txtQty.getText());
             double total = unitPrice*qty;
 
-            CustomerBuyItem customerBuyItem = new CustomerBuyItem(itemCode, description, unitPrice, qty, total);
+            CustomerBuyItem customerBuyItem = new CustomerBuyItem(itemCode, description, unitPrice, qty,stock, total);
             int row = isAlreadyExists(customerBuyItem);
             if (row==-1){
                 cartList.add(customerBuyItem);
                 tblPlaceOrderChart.setItems(cartList);
             }else {
                 CustomerBuyItem cart =cartList.get(row);
-                CustomerBuyItem tempCartTm = new CustomerBuyItem(customerBuyItem.getItemCode(),customerBuyItem.getDescription(),customerBuyItem.getUnitPrice(),customerBuyItem.getQty()+qty,total+customerBuyItem.getTotal());
+                CustomerBuyItem tempCartTm = new CustomerBuyItem(customerBuyItem.getItemCode(),customerBuyItem.getDescription(),customerBuyItem.getUnitPrice(),customerBuyItem.getQty()+qty, customerBuyItem.getStock(), total+customerBuyItem.getTotal());
                 cartList.remove(row);
                 cartList.add(tempCartTm);
             }
@@ -155,8 +161,8 @@ public class PlaceOrderFormController implements Initializable {
 //        cartList.remove(row);
         txtItemDescription.setText("");
         txtItemUnitPrice.setText("");
-        txtItemQtyOnHand.setText("");
-        txtCustomerBuyItemQty.setText("");
+        txtItemStock.setText("");
+        txtQty.setText("");
 //        calculateTotal();
 
     }
