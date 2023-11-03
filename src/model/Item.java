@@ -5,14 +5,14 @@ public class Item {
     private String itemCode;
    private String description;
     private double unitPrice;
-    private int qtyOnHand;
+    private int stock;
 
 
-    public Item(String itemCode, String description, double unitPrice, int qtyOnHand) {
+    public Item(String itemCode, String description, double unitPrice, int stock) {
         this.itemCode = itemCode;
         this.description = description;
         this.unitPrice = unitPrice;
-        this.qtyOnHand = qtyOnHand;
+        this.stock = stock;
     }
 
     public String getItemCode() {
@@ -39,11 +39,11 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    public int getQtyOnHand() {
-        return qtyOnHand;
+    public int getStock() {
+        return stock;
     }
 
-    public void setQtyOnHand(int qtyOnHand) {
-        this.qtyOnHand = qtyOnHand;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

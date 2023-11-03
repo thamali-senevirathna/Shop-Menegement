@@ -77,7 +77,7 @@
                   </TextField>
                   <TextField fx:id="txtItemQtyOnHand" layoutX="7.0" layoutY="70.0" prefHeight="35.0" prefWidth="133.0" promptText="Qty On Hand">
                      <font>
-                        <Font name="Georgia" size="19.0" />
+                        <Font name="Georgia" size="18.0" />
                      </font>
                   </TextField>
                   <Button layoutX="263.0" layoutY="72.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="25.0" prefWidth="56.0" style="-fx-border-color: #404040; -fx-border-radius: 3px;" text="+">
@@ -183,11 +183,6 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <TextField fx:id="lblDate" alignment="CENTER" layoutX="268.0" layoutY="117.0" prefHeight="35.0" prefWidth="164.0" promptText="Date : YYYY-MM-DD">
-               <font>
-                  <Font name="Lucida Sans Unicode" size="14.0" />
-               </font>
-            </TextField>
             <TextField fx:id="txtAddress" alignment="CENTER" layoutX="56.0" layoutY="238.0" prefHeight="35.0" prefWidth="164.0" promptText="Address">
                <font>
                   <Font name="Georgia" size="19.0" />
@@ -203,6 +198,11 @@
                   <Font name="Georgia" size="19.0" />
                </font>
             </TextField>
+            <Label fx:id="lblDate" alignment="CENTER" layoutX="268.0" layoutY="119.0" prefHeight="32.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-background-radius: 2px;" text="Date : YYYY-MM-DD" textFill="SILVER">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

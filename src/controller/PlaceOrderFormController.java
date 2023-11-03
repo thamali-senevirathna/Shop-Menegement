@@ -31,7 +31,7 @@ public class PlaceOrderFormController implements Initializable {
     public TableColumn clmUnitPrice;
     public TableColumn clmQtyOnHand;
     public TableColumn clmTotal;
-    public TextField lblDate;
+    public Label lblDate;
     public TextField txtAddress;
     public TextField lblOrderId;
     public TextField txtSalary;
@@ -151,13 +151,13 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     public void btnRemove(ActionEvent actionEvent) {
-        int row = tblPlaceOrderChart.getSelectionModel().getSelectedIndex();
-        cartList.remove(row);
+//        int row = tblPlaceOrderChart.getSelectionModel().getSelectedIndex();
+//        cartList.remove(row);
         txtItemDescription.setText("");
         txtItemUnitPrice.setText("");
         txtItemQtyOnHand.setText("");
         txtCustomerBuyItemQty.setText("");
-        calculateTotal();
+//        calculateTotal();
 
     }
 

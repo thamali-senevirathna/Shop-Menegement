@@ -21,12 +21,13 @@ public class ItemFormController implements Initializable {
     public TextField txtItemCode;
     public TextField txtItemDescription;
     public TextField txtItemUnitPrice;
-    public TextField txtItemQtyOnHand;
+    public TextField txtItemQty;
+    public TextField txtItemStock;
     public TableView tblItem;
     public TableColumn clmItemCode;
     public TableColumn clmItemDescription;
-    public TableColumn clmItemQtyOnHand;
     public TableColumn clmItemQty;
+    public TableColumn clmItemStock;
     public TableColumn clmItemUnitPrice;
     ItemController itemController;
 
@@ -45,8 +46,8 @@ public class ItemFormController implements Initializable {
         String itemCode = txtItemCode.getText();
         String description = txtItemDescription.getText();
         double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtItemQtyOnHand.getText());
-        Item item = new Item(itemCode, description, unitPrice, qtyOnHand);
+        int stock = Integer.parseInt(txtItemStock.getText());
+        Item item = new Item(itemCode, description, unitPrice, stock);
 
         Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to add this item ?", ButtonType.YES, ButtonType.NO).showAndWait();
         if (buttonType.get() == ButtonType.YES) {
@@ -64,8 +65,8 @@ public class ItemFormController implements Initializable {
         String itemCode = txtItemCode.getText();
         String description = txtItemDescription.getText();
         double unitPrice =Double.parseDouble(txtItemUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtItemQtyOnHand.getText());
-        Item item = new Item(itemCode, description, unitPrice, qtyOnHand);
+        int stock = Integer.parseInt(txtItemStock.getText());
+        Item item = new Item(itemCode, description, unitPrice, stock);
         Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to update this item?", ButtonType.YES, ButtonType.NO).showAndWait();
         if (buttonType.get() == ButtonType.YES) {
             boolean isUpdated = itemController.updateItem(item);
@@ -85,7 +86,7 @@ public class ItemFormController implements Initializable {
         if (item != null) {
             txtItemDescription.setText(item.getDescription());
             txtItemUnitPrice.setText(String.valueOf(item.getUnitPrice()));
-            txtItemQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
+            txtItemStock.setText(String.valueOf(item.getStock()));
         }else {
             new Alert(Alert.AlertType.ERROR, "Item Not Found !").show();
         }
@@ -113,7 +114,7 @@ public class ItemFormController implements Initializable {
         txtItemCode.setText("");
         txtItemDescription.setText("");
         txtItemUnitPrice.setText("");
-        txtItemQtyOnHand.setText("");
+        txtItemStock.setText("");
     }
 
 
@@ -127,14 +128,14 @@ public class ItemFormController implements Initializable {
         txtItemCode.setText(item.getItemCode());
         txtItemDescription.setText(((Item) newValue).getDescription());
         txtItemUnitPrice.setText(String.valueOf(((Item) newValue).getUnitPrice()));
-        txtItemQtyOnHand.setText(String.valueOf(((Item) newValue).getQtyOnHand()));
+        txtItemStock.setText(String.valueOf(((Item) newValue).getStock()));
     }
 
     private void setCellValueFactory() {
         clmItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         clmItemDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         clmItemUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        clmItemQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        clmItemStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
     }
     public void txtOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         btnItemSearchAction( actionEvent);

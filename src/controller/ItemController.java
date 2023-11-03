@@ -19,7 +19,7 @@ public class ItemController implements ItemService{
                     item.getItemCode(),
                     item.getDescription(),
                     item.getUnitPrice(),
-                    item.getQtyOnHand()
+                    item.getStock()
             );
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
